@@ -27,8 +27,7 @@ app.use(bodyParser.json());
 
 // POSTリクエストでユーザー情報をデータベースに保存
 app.post('/user', (req, res) => {
-  res.status(400).json({ message: 'User のページです！' });
-  
+  //res.status(400).json({ message: 'User のページです！' });
   const { name, email } = req.body;
   if (!name || !email) {
     return res.status(401).json({ message: 'Name and email are required' });
