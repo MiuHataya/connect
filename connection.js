@@ -43,7 +43,7 @@ app.post('/user', (req, res) => {
   });
 });
 
-app.post('/', (req, res, next) => {
+app.get('/', (req, res, next) => {
   res.status(200).json({ message: 'User inputは必要です！' });
 });
 
