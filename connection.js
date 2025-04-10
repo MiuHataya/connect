@@ -41,7 +41,7 @@ app.post('/user', (req, res) => {
 });
 
 
-// ポートの設定（環境変数から取得、設定されていなければ3000番）
+// ポートの設定
 const port = process.env.PORT || 3000;
 
 // サーバー起動
