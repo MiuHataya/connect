@@ -15,6 +15,7 @@ const db = mysql.createConnection({
 // 接続確認
 db.connect((err) => {
   if (err) {
+    console.log(アババババ);
     console.error('Database connection error:', err);
   } else {
     console.log('Connected to MySQL');
@@ -23,6 +24,7 @@ db.connect((err) => {
 
 app.use(bodyParser.json());
 
+/*
 // POSTリクエストでユーザー情報をデータベースに保存
 app.post('/user', (req, res) => {
   const { name, email } = req.body;
@@ -39,7 +41,7 @@ app.post('/user', (req, res) => {
     res.status(201).json({ message: 'User created', userId: results.insertId });
   });
 });
-
+*/
 
 // ポートの設定
 const port = process.env.PORT || 8080;
