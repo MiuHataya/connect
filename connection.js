@@ -40,6 +40,10 @@ app.post('/user', (req, res) => {
   });
 });
 
+
+// ポートの設定（環境変数から取得、設定されていなければ3000番）
+const port = process.env.PORT || 3000;
+
 // サーバー起動
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
