@@ -42,7 +42,7 @@ app.post('/user', (req, res) => {
 
 
 // ポートの設定
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 // サーバー起動
 app.listen(port, () => {
