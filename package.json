@@ -1,0 +1,12 @@
+{
+  "name": "user_data",
+  "version": "1.0.0",
+  "main": "connect.js",
+  "scripts": {
+    "start": "node connection.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
