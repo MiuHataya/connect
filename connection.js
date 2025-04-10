@@ -24,10 +24,12 @@ db.connect((err) => {
 //リクエストを JSON 形式として処理する
 app.use(bodyParser.json());
 
+
 // POSTリクエストでユーザー情報をデータベースに保存
 app.post('/user', (req, res) => {
+  res.status(400).json({ message: 'User のページです！' });
+  
   const { name, email } = req.body;
-
   if (!name || !email) {
     return res.status(400).json({ message: 'Name and email are required' });
   }
@@ -40,7 +42,6 @@ app.post('/user', (req, res) => {
     res.status(201).json({ message: 'User created', userId: results.insertId });
   });
 });
-
 
 app.use((req, res, next) => {
   res.status(400).json({ message: 'User inputは必要です！' });
