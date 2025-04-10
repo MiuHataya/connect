@@ -31,7 +31,7 @@ app.post('/user', (req, res) => {
   
   const { name, email } = req.body;
   if (!name || !email) {
-    return res.status(400).json({ message: 'Name and email are required' });
+    return res.status(401).json({ message: 'Name and email are required' });
   }
 
   const query = 'INSERT INTO users (name, email) VALUES (?, ?)';
@@ -39,12 +39,12 @@ app.post('/user', (req, res) => {
     if (err) {
       return res.status(500).json({ message: 'Error inserting user', error: err });
     }
-    res.status(201).json({ message: 'User created', userId: results.insertId });
+    res.status(501).json({ message: 'User created', userId: results.insertId });
   });
 });
 
 app.use((req, res, next) => {
-  res.status(400).json({ message: 'User inputは必要です！' });
+  res.status(200).json({ message: 'User inputは必要です！' });
 });
 
 
