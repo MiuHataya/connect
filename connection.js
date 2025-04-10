@@ -43,7 +43,7 @@ app.post('/user', (req, res) => {
 
 
 app.use((req, res, next) => {
-  res.status(404).json({ message: 'User inputは必要です！' });
+  res.status(400).json({ message: 'User inputは必要です！' });
 });
 
 
