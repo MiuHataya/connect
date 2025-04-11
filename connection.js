@@ -40,7 +40,7 @@ app.post('/user', async (req, res) => {
   const query = 'INSERT INTO user_table (user_name, email, password) VALUES (?, ?, ?)';
   db.query(query, [user_name, email, hashedPassword], (err, results) => {
     if (err) {
-      return res.status(500).json({ message: 'Error inserting user', error: err });
+      return res.status(401).json({ message: 'Error inserting user', error: err });
     }
     res.status(201).json({ message: 'User created successfully', userId: results.insertId });
   });
