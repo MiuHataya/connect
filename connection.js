@@ -27,8 +27,15 @@ app.use(bodyParser.json());
 
 // POSTリクエストでユーザー情報をデータベースに保存
 app.post('/user', (req, res) => {
-  //res.status(400).json({ message: 'User のページです！' });
-  const { name, email } = req.body;
+  const { user_name, email, password } = req.body;
+
+  // リクエストボディのデータをコンソールに表示
+  console.log('Received data:');
+  console.log(`User Name: ${user_name}`);
+  console.log(`Email: ${email}`);
+  console.log(`Password: ${password}`);
+  
+  /*
   if (!name || !email) {
     return res.status(401).json({ message: 'Name and email are required' });
   }
@@ -40,6 +47,7 @@ app.post('/user', (req, res) => {
     }
     res.status(501).json({ message: 'User created', userId: results.insertId });
   });
+  */
 });
 
 app.get('/', (req, res, next) => {
