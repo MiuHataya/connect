@@ -101,9 +101,7 @@ app.get('/story', (req, res) => {
 
 // Tableに収納
 app.get('/save', (req, res) => {
-  const { user_ID } = req.query;
-  const { prompt } = req.query;
-  const { story } = req.query;
+  const { user_ID, prompt, story } = req.query;
 
   console.log('Received data:');
   console.log(`ID: ${user_ID}`);
