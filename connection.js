@@ -105,11 +105,11 @@ app.get('/save', (req, res) => {
 
   console.log('Received data:');
   console.log(`ID: ${user_ID}`);
-  console.log(`ID: ${prompt}`);
-  console.log(`ID: ${story}`);
+  console.log(`prompt: ${prompt}`);
+  console.log(`story: ${story}`);
   
   const query = 'INSERT INTO story_table (user_ID, prompt, story) VALUES (?, ?, ?)';
-  db.query(query, [user_ID], async (err, results) => {
+  db.query(query, [user_ID, prompt, story], async (err, results) => {
     if (err) {
       return res.status(404).json({ message: 'User not found' });
     }
