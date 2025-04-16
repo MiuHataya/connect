@@ -72,6 +72,31 @@ app.post('/login', (req, res) => {
   });
 });
 
+// ログイン処理
+app.get('/story', (req, res) => {
+  const { user_ID } = req.query;
+
+  console.log('Received data:');
+  console.log(`ID: ${user_ID}`);
+
+  const query = 'SELECT * FROM story_table WHERE user_id = ?';
+  db.query(query, [user_ID], async (err, results) => {
+    if (err) {
+      return res.status(404).json({ message: 'User not found' });
+    } else if (results.length === 0){
+      return res.status(401).json({ message: 'No story yet' });
+    }
+
+    res.status(200).json({
+      message: 'Story successful',
+      stories: results.map(story => ({
+        prompt: story.prompt,
+        generated: story.story
+      }))
+    });
+  });
+});
+
 
 // デフォルトメッセージ
 app.get('/', (req, res) => {
