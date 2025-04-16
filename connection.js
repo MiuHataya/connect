@@ -72,7 +72,8 @@ app.post('/login', (req, res) => {
   });
 });
 
-// ログイン処理
+
+// データ収集
 app.get('/story', (req, res) => {
   const { user_ID } = req.query;
 
