@@ -60,9 +60,9 @@ app.post('/login', (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (isMatch) {
-      res.status(200).json({ message: 'Login successful' });
+      res.status(200).json({ message: 'Login successful' , userId: results.user_id, userName: results.user_name});
     } else {
-      res.status(401).json({ message: 'Invalid password' });
+      res.status(401).json({ message: 'Incorrect password' });
     }
   });
 });
