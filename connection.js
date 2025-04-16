@@ -99,6 +99,27 @@ app.get('/story', (req, res) => {
 });
 
 
+// Tableに収納
+app.get('/save', (req, res) => {
+  const { user_ID } = req.query;
+  const { prompt } = req.query;
+  const { story } = req.query;
+
+  console.log('Received data:');
+  console.log(`ID: ${user_ID}`);
+  console.log(`ID: ${prompt}`);
+  console.log(`ID: ${story}`);
+  
+  const query = 'INSERT INTO story_table (user_ID, prompt, story) VALUES (?, ?, ?)';
+  db.query(query, [user_ID], async (err, results) => {
+    if (err) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json({ message: 'Saved successfully' });
+  });
+});
+
+
 // デフォルトメッセージ
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'User inputは必要です！' });
