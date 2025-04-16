@@ -46,9 +46,14 @@ app.post('/user', async (req, res) => {
   });
 });
 
+
 // ログイン処理
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
+
+  console.log('Received data:');
+  console.log(`Email: ${email}`);
+  console.log(`Password: ${password}`);
 
   const query = 'SELECT * FROM user_table WHERE email = ?';
   db.query(query, [email], async (err, results) => {
@@ -60,12 +65,13 @@ app.post('/login', (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (isMatch) {
-      res.status(200).json({ message: 'Login successful' , userId: results.user_id, userName: results.user_name});
+      res.status(200).json({ message: 'Login successful' , userId: user.user_id, userName: user.user_name});
     } else {
       res.status(401).json({ message: 'Incorrect password' });
     }
   });
 });
+
 
 // デフォルトメッセージ
 app.get('/', (req, res) => {
